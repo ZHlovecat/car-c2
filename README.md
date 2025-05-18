@@ -3,9 +3,8 @@
 一个帮助驾考学员备战上海龙泉考点科目三考试的移动端Web应用，提供灯光操作指南、模拟考试、考试线路图和注意事项等功能。
 
 ## 项目预览
+<img width="486" alt="image" src="https://github.com/user-attachments/assets/96ab6b3b-eada-4775-9b07-7ac5635b1b74" />
 
-![项目预览](https://placeholder-for-screenshot.com)  
-*（请替换为实际项目截图）*
 
 ## 功能特点
 
@@ -65,7 +64,7 @@ car-c2/
 
 1. 克隆仓库
 ```bash
-git clone https://github.com/yourusername/car-c2.git
+git clone https://github.com/ZHlovecat/car-c2.git
 ```
 
 2. 使用浏览器打开index.html或部署到任意静态网站服务器
@@ -97,7 +96,7 @@ git clone https://github.com/yourusername/car-c2.git
 
 ## 许可证
 
-该项目采用 MIT 许可证 - 查看 [LICENSE](LICENSE) 文件了解详情
+该项目采用 MIT 许可证 
 
 ## 致谢
 
@@ -107,7 +106,7 @@ git clone https://github.com/yourusername/car-c2.git
 
 ## 联系方式
 
-如有问题或建议，请通过 [issues](https://github.com/yourusername/car-c2/issues) 联系我们。
+如有问题或建议，请通过 [issues](https://github.com/ZHlovecat/car-c2/issues) 联系我们。
 
 ---
 
