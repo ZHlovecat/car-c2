@@ -73,8 +73,7 @@ git clone https://github.com/ZHlovecat/car-c2.git
 
 ## 在线演示
 
-访问 [上海龙泉考点科目三小助手](https://your-demo-link.com) 查看在线演示。  
-*（请替换为实际部署地址）*
+访问 [上海龙泉考点科目三小助手](https://car-c2.vercel.app) 查看在线演示。  
 
 ## 贡献指南
 
