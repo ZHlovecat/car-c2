@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>上海龙泉考点科目三灯光模拟考试</title>
+    <style>
+        :root {
+            --primary: #e74c3c;
+            --secondary: #3498db;
+            --dark: #2c3e50;
+            --light: #ecf0f1;
+            --success: #2ecc71;
+            --warning: #f39c12;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'PingFang SC', 'Helvetica Neue', Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: var(--dark);
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 25px;
+            position: relative;
+        }
+        
+        h1 {
+            color: var(--primary);
+            font-size: 24px;
+            margin-bottom: 10px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        h1:after {
+            content: "";
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 3px;
+        }
+        
+        .subtitle {
+            color: var(--dark);
+            font-size: 14px;
+            opacity: 0.8;
+        }
+        
+        .back-button {
+            position: absolute;
+            left: 0;
+            top: 5px;
+            background: none;
+            border: none;
+            color: var(--secondary);
+            font-size: 14px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+        
+        .back-button:before {
+            content: "←";
+            margin-right: 5px;
+            font-size: 16px;
+        }
+        
+        .exam-container {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+        
+        .score-panel {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 10px 15px;
+            background-color: var(--light);
+            border-radius: 8px;
+        }
+        
+        .score {
+            font-weight: bold;
+            font-size: 18px;
+        }
+        
+        .question-container {
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            background-color: rgba(52, 152, 219, 0.1);
+        }
+        
+        .question {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        .question-number {
+            display: inline-block;
+            background-color: var(--secondary);
+            color: white;
+            width: 28px;
+            height: 28px;
+            text-align: center;
+            line-height: 28px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        
+        .options {
+            display: grid;
+            grid-gap: 10px;
+        }
+        
+        .option {
+            padding: 12px 15px;
+            background-color: white;
+            border: 2px solid #e1e1e1;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+        }
+        
+        .option:hover {
+            border-color: var(--secondary);
+            background-color: rgba(52, 152, 219, 0.05);
+        }
+        
+        .option.selected {
+            border-color: var(--secondary);
+            background-color: rgba(52, 152, 219, 0.1);
+        }
+        
+        .option.correct {
+            border-color: var(--success);
+            background-color: rgba(46, 204, 113, 0.1);
+        }
+        
+        .option.incorrect {
+            border-color: var(--primary);
+            background-color: rgba(231, 76, 60, 0.1);
+        }
+        
+        .option-letter {
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            text-align: center;
+            line-height: 24px;
+            background-color: #e1e1e1;
+            border-radius: 50%;
+            margin-right: 10px;
+            font-weight: bold;
+            color: var(--dark);
+        }
+        
+        .option.selected .option-letter,
+        .option.correct .option-letter {
+            background-color: var(--success);
+            color: white;
+        }
+        
+        .option.incorrect .option-letter {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 20px;
+            background-color: var(--secondary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            width: 100%;
+            margin-top: 15px;
+        }
+        
+        .btn:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+        }
+        
+        .btn:active {
+            transform: scale(0.98);
+        }
+        
+        .btn-primary {
+            background-color: var(--secondary);
+        }
+        
+        .btn-success {
+            background-color: var(--success);
+        }
+        
+        .btn-danger {
+            background-color: var(--primary);
+        }
+        
+        .result-container {
+            text-align: center;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        
+        .result-pass {
+            background-color: rgba(46, 204, 113, 0.1);
+            border: 2px solid var(--success);
+        }
+        
+        .result-fail {
+            background-color: rgba(231, 76, 60, 0.1);
+            border: 2px solid var(--primary);
+        }
+        
+        .result-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .result-pass .result-title {
+            color: var(--success);
+        }
+        
+        .result-fail .result-title {
+            color: var(--primary);
+        }
+        
+        .result-message {
+            margin-bottom: 15px;
+        }
+        
+        .result-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+        
+        .progress-bar {
+            height: 6px;
+            background-color: #e1e1e1;
+            border-radius: 3px;
+            overflow: hidden;
+            margin-top: 5px;
+        }
+        
+        .progress {
+            height: 100%;
+            background: linear-gradient(to right, var(--secondary), var(--success));
+            transition: width 0.3s ease;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #7f8c8d;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <button class="back-button" onclick="window.location.href='index.html'">返回</button>
+        <h1>科目三灯光模拟考试</h1>
+        <p class="subtitle">上海龙泉考点灯光操作模拟测试</p>
+    </header>
+    
+    <div class="exam-container">
+        <div class="score-panel">
+            <div>
+                <div>当前题目：<span id="current-question">1</span>/<span id="total-questions">10</span></div>
+                <div class="progress-bar">
+                    <div class="progress" id="progress-bar" style="width: 10%;"></div>
+                </div>
+            </div>
+            <div class="score">得分：<span id="score">0</span></div>
+        </div>
+        
+        <div id="question-container" class="question-container">
+            <div class="question"><span class="question-number">1</span><span id="question-text">请问"请开启前照灯"应该如何操作？</span></div>
+            <div class="options" id="options-container">
+                <!-- 选项将通过JavaScript动态生成 -->
+            </div>
+        </div>
+        
+        <button id="submit-btn" class="btn btn-success">提交答案</button>
+        
+        <div id="result-container" class="result-container hidden">
+            <!-- 结果将通过JavaScript动态生成 -->
+        </div>
+    </div>
+    
+    <footer>
+        © 2025 上海龙泉考点科目三小助手 · 祝您考试顺利
+    </footer>
+    
+    <script>
+        // 灯光操作数据
+        const lightOperations = [
+            { id: 1, fixed: true, question: "请开启前照灯", answer: "开启近光灯", options: ["开启近光灯", "开启远光灯", "开启示宽灯", "开启雾灯"] },
+            { id: 2, fixed: false, question: "同方向近距离跟车行驶", answer: "近光灯", options: ["近光灯", "远光灯", "远近光交替", "示宽灯"] },
+            { id: 3, fixed: false, subQuestions: [
+                { question: "通过急弯", answer: "远近光交替", options: ["近光灯", "远光灯", "远近光交替", "示宽灯"] },
+                { question: "通过坡路", answer: "远近光交替", options: ["近光灯", "远光灯", "远近光交替", "示宽灯"] },
+                { question: "通过拱桥", answer: "远近光交替", options: ["近光灯", "远光灯", "远近光交替", "示宽灯"] },
+                { question: "通过人行横道", answer: "远近光交替", options: ["近光灯", "远光灯", "远近光交替", "示宽灯"] },
+                { question: "通过没有交通信号灯控制的路口", answer: "远近光交替", options: ["近光灯", "远光灯", "远近光交替", "示宽灯"] }
+            ]},
+            { id: 4, fixed: false, question: "与机动车会车", answer: "近光灯", options: ["近光灯", "远光灯", "远近光交替", "示宽灯"] },
+            { id: 5, fixed: false, question: "通过交通信号灯控制的路口", answer: "近光灯", options: ["近光灯", "远光灯", "远近光交替", "示宽灯"] },
+            { id: 6, fixed: false, question: "超越前方车辆", answer: "左转灯—远近光交替—右转灯", options: ["左转灯—远近光交替—右转灯", "远近光交替—左转灯", "左转灯—近光灯", "远光灯—右转灯"] },
+            { id: 7, fixed: false, subQuestions: [
+                { question: "在照明不良的道路行驶", answer: "远光灯", options: ["近光灯", "远光灯", "远近光交替", "示宽灯"] },
+                { question: "在无照明的道路行驶", answer: "远光灯", options: ["近光灯", "远光灯", "远近光交替", "示宽灯"] }
+            ]},
+            { id: 8, fixed: false, question: "在有路灯、照明良好的道路行驶", answer: "近光灯", options: ["近光灯", "远光灯", "远近光交替", "示宽灯"] },
+            { id: 9, fixed: true, question: "路边临时停车", answer: "示宽灯+报警灯", options: ["示宽灯+报警灯", "近光灯", "远光灯", "远近光交替"] },
+            { id: 10, fixed: true, question: "请关闭所有的灯光并完成考试", answer: "关闭所有灯光", options: ["关闭所有灯光", "保持远光灯", "保持近光灯", "保持示宽灯"] }
+        ];
+
+        // 应用状态
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let examQuestions = [];
+        let selectedOption = null;
+        let isAnswerSubmitted = false;
+        let isExamFinished = false;
+
+        // DOM 元素
+        const questionContainer = document.getElementById('question-container');
+        const questionText = document.getElementById('question-text');
+        const optionsContainer = document.getElementById('options-container');
+        const currentQuestionElem = document.getElementById('current-question');
+        const totalQuestionsElem = document.getElementById('total-questions');
+        const scoreElem = document.getElementById('score');
+        const progressBar = document.getElementById('progress-bar');
+        const submitBtn = document.getElementById('submit-btn');
+        const resultContainer = document.getElementById('result-container');
+
+        // 生成随机考题
+        function generateExamQuestions() {
+            const questions = [];
+            
+            // 添加固定顺序的题目 (1, 9, 10)
+            lightOperations.filter(op => op.fixed).forEach(op => {
+                questions.push({
+                    id: op.id,
+                    question: op.question,
+                    answer: op.answer,
+                    options: shuffleArray([...op.options])
+                });
+            });
+            
+            // 随机抽取第3题的子问题
+            const question3 = lightOperations.find(op => op.id === 3);
+            const randomSubQuestion3 = question3.subQuestions[Math.floor(Math.random() * question3.subQuestions.length)];
+            questions.push({
+                id: 3,
+                question: randomSubQuestion3.question,
+                answer: randomSubQuestion3.answer,
+                options: shuffleArray([...randomSubQuestion3.options])
+            });
+            
+            // 随机抽取第7题的子问题
+            const question7 = lightOperations.find(op => op.id === 7);
+            const randomSubQuestion7 = question7.subQuestions[Math.floor(Math.random() * question7.subQuestions.length)];
+            questions.push({
+                id: 7,
+                question: randomSubQuestion7.question,
+                answer: randomSubQuestion7.answer,
+                options: shuffleArray([...randomSubQuestion7.options])
+            });
+            
+            // 添加其他随机题目 (2, 4, 5, 6, 8)
+            const randomQuestions = lightOperations.filter(op => !op.fixed && op.id !== 3 && op.id !== 7);
+            randomQuestions.forEach(op => {
+                questions.push({
+                    id: op.id,
+                    question: op.question,
+                    answer: op.answer,
+                    options: shuffleArray([...op.options])
+                });
+            });
+            
+            // 按照要求排序：1固定第一位，9和10固定最后两位，其他2-8随机
+            const sortedQuestions = [];
+            
+            // 添加第1题
+            sortedQuestions.push(questions.find(q => q.id === 1));
+            
+            // 添加随机顺序的题目 (2-8)
+            const middleQuestions = questions.filter(q => q.id >= 2 && q.id <= 8);
+            shuffleArray(middleQuestions).forEach(q => sortedQuestions.push(q));
+            
+            // 添加第9和第10题
+            sortedQuestions.push(questions.find(q => q.id === 9));
+            sortedQuestions.push(questions.find(q => q.id === 10));
+            
+            return sortedQuestions;
+        }
+
+        // 随机打乱数组
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        // 显示当前问题
+        function displayCurrentQuestion() {
+            const currentQuestion = examQuestions[currentQuestionIndex];
+            
+            // 更新问题文本
+            questionText.textContent = `请问"${currentQuestion.question}"应该如何操作？`;
+            
+            // 更新进度
+            currentQuestionElem.textContent = currentQuestionIndex + 1;
+            totalQuestionsElem.textContent = examQuestions.length;
+            progressBar.style.width = `${((currentQuestionIndex + 1) / examQuestions.length) * 100}%`;
+            
+            // 更新题号显示
+            document.querySelector('.question-number').textContent = currentQuestionIndex + 1;
+            
+            // 清空选项容器
+            optionsContainer.innerHTML = '';
+            
+            // 添加选项
+            const optionLetters = ['A', 'B', 'C', 'D'];
+            currentQuestion.options.forEach((option, index) => {
+                const optionElement = document.createElement('div');
+                optionElement.className = 'option';
+                optionElement.innerHTML = `
+                    <span class="option-letter">${optionLetters[index]}</span>
+                    <span>${option}</span>
+                `;
+                
+                optionElement.addEventListener('click', () => {
+                    if (!isAnswerSubmitted) {
+                        // 移除之前的选择
+                        document.querySelectorAll('.option').forEach(opt => {
+                            opt.classList.remove('selected');
+                        });
+                        
+                        // 选中当前选项
+                        optionElement.classList.add('selected');
+                        selectedOption = option;
+                    }
+                });
+                
+                optionsContainer.appendChild(optionElement);
+            });
+            
+            // 重置状态
+            selectedOption = null;
+            isAnswerSubmitted = false;
+        }
+
+        // 检查答案
+        function checkAnswer() {
+            if (!selectedOption) {
+                alert('请选择一个选项！');
+                return;
+            }
+            
+            const currentQuestion = examQuestions[currentQuestionIndex];
+            const isCorrect = selectedOption === currentQuestion.answer;
+            
+            // 标记正确和错误选项
+            document.querySelectorAll('.option').forEach(option => {
+                const optionText = option.querySelector('span:last-child').textContent;
+                
+                if (optionText === currentQuestion.answer) {
+                    option.classList.add('correct');
+                } else if (optionText === selectedOption && !isCorrect) {
+                    option.classList.add('incorrect');
+                }
+            });
+            
+            // 更新分数
+            if (isCorrect) {
+                score += 10;
+                scoreElem.textContent = score;
+                
+                // 设置状态
+                isAnswerSubmitted = true;
+                
+                // 如果是最后一题且答对了，显示通过结果
+                if (currentQuestionIndex >= examQuestions.length - 1) {
+                    showResult(true);
+                } else {
+                    // 正确答案后延迟1秒自动进入下一题
+                    setTimeout(() => {
+                        nextQuestion();
+                    }, 1000);
+                }
+            } else {
+                // 错误一题即不合格
+                showResult(false);
+            }
+        }
+
+        // 显示考试结果
+        function showResult(isPassed) {
+            isExamFinished = true;
+            
+            resultContainer.className = isPassed ? 
+                'result-container result-pass' : 
+                'result-container result-fail';
+            
+            resultContainer.innerHTML = `
+                <div class="result-icon">${isPassed ? '🎉' : '😢'}</div>
+                <h2 class="result-title">${isPassed ? '考试通过' : '考试不通过'}</h2>
+                <p class="result-message">
+                    ${isPassed ? 
+                        `恭喜你通过了灯光模拟考试！得分：${score}分` : 
+                        '很遗憾，您答错了一题，科目三灯光考试要求全部正确才能通过。'}
+                </p>
+                <p class="result-message">
+                    ${isPassed ? 
+                        '继续保持，相信你在实际考试中也能取得好成绩！' : 
+                        '请继续练习，下次一定能通过！'}
+                </p>
+                <button class="btn btn-primary" onclick="restartExam()">重新开始</button>
+            `;
+            
+            resultContainer.classList.remove('hidden');
+            questionContainer.classList.add('hidden');
+            submitBtn.classList.add('hidden');
+        }
+
+        // 进入下一题
+        function nextQuestion() {
+            currentQuestionIndex++;
+            displayCurrentQuestion();
+        }
+
+        // 重新开始考试
+        function restartExam() {
+            currentQuestionIndex = 0;
+            score = 0;
+            examQuestions = generateExamQuestions();
+            isExamFinished = false;
+            
+            // 更新UI
+            scoreElem.textContent = score;
+            resultContainer.classList.add('hidden');
+            questionContainer.classList.remove('hidden');
+            submitBtn.classList.remove('hidden');
+            
+            displayCurrentQuestion();
+        }
+
+        // 事件监听
+        submitBtn.addEventListener('click', checkAnswer);
+
+        // 暴露到全局作用域，用于重新开始考试按钮
+        window.restartExam = restartExam;
+
+        // 初始化考试
+        document.addEventListener('DOMContentLoaded', () => {
+            examQuestions = generateExamQuestions();
+            displayCurrentQuestion();
+        });
+    </script>
+</body>
+</html> 

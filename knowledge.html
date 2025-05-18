@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>注意事项</title>
+    <style>
+        :root {
+            --primary: #e74c3c;
+            --secondary: #3498db;
+            --dark: #2c3e50;
+            --light: #ecf0f1;
+            --success: #2ecc71;
+            --warning: #f39c12;
+        }
+        
+        .back-button {
+            position: absolute;
+            left: 0;
+            top: 5px;
+            background: none;
+            border: none;
+            color: var(--secondary);
+            font-size: 14px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+        
+        .back-button:before {
+            content: "←";
+            margin-right: 5px;
+            font-size: 16px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'PingFang SC', 'Helvetica Neue', Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: var(--dark);
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 25px;
+            position: relative;
+        }
+        
+        h1 {
+            color: var(--primary);
+            font-size: 24px;
+            margin-bottom: 10px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        h1:after {
+            content: "";
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 3px;
+        }
+        
+        .subtitle {
+            color: var(--dark);
+            font-size: 14px;
+            opacity: 0.8;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-3px);
+        }
+        
+        .card:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--primary), var(--secondary));
+        }
+        
+        h2 {
+            color: var(--dark);
+            font-size: 18px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        h2:before {
+            content: "🚗";
+            margin-right: 10px;
+        }
+        
+        .critical {
+            border-left: 5px solid var(--primary);
+        }
+        
+        .critical h2:before {
+            content: "⚠️";
+        }
+        
+        .important {
+            border-left: 5px solid var(--warning);
+        }
+        
+        .important h2:before {
+            content: "❗";
+        }
+        
+        .procedure {
+            border-left: 5px solid var(--secondary);
+        }
+        
+        .procedure h2:before {
+            content: "🔧";
+        }
+        
+        ul {
+            padding-left: 20px;
+        }
+        
+        li {
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        li:before {
+            content: "•";
+            color: var(--secondary);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+        
+        .highlight {
+            background-color: rgba(231, 76, 60, 0.1);
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-weight: bold;
+            color: var(--primary);
+        }
+        
+        .speed-indicator {
+            display: inline-block;
+            background: var(--light);
+            border-radius: 12px;
+            padding: 2px 8px;
+            font-size: 12px;
+            margin-left: 5px;
+            border: 1px solid #ddd;
+        }
+        
+        .speed-20 { background: #f1c40f; color: white; }
+        .speed-30 { background: #e67e22; color: white; }
+        .speed-40 { background: #e74c3c; color: white; }
+        .speed-60 { background: #c0392b; color: white; }
+        
+        .penalty {
+            display: inline-block;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 12px;
+            margin-left: 5px;
+        }
+        
+        .penalty-10 { background: #f39c12; color: white; }
+        .penalty-100 { background: #e74c3c; color: white; }
+        
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #7f8c8d;
+            font-size: 12px;
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(231, 76, 60, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(231, 76, 60, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(231, 76, 60, 0); }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <button class="back-button" onclick="window.location.href='index.html'">返回</button>
+        <h1>注意事项</h1>
+        <p class="subtitle">高效记忆 · 一次通过 · 关键要点</p>
+    </header>
+    
+    <div class="card critical pulse">
+        <h2>扣分关键点</h2>
+        <ul>
+            <li><strong>靠边停车</strong>：车轮离白线<span class="highlight">大于30公分扣10分</span> <span class="penalty penalty-10">-10分</span>，<span class="highlight">大于50公分扣100分</span> <span class="penalty penalty-100">-100分</span>，<span class="highlight">压白线扣100分</span> <span class="penalty penalty-100">-100分</span></li>
+            <li><strong>转向灯</strong>：所有打转向灯后<span class="highlight">三秒内不能动方向盘</span></li>
+        </ul>
+    </div>
+    
+    <div class="card important">
+        <h2>速度控制要点</h2>
+        <ul>
+            <li><strong>直线行驶</strong>：速度不能低于<span class="highlight">20码</span> <span class="speed-indicator speed-20">≥20km/h</span>，尽量控制在<span class="highlight">25到30码</span> <span class="speed-indicator speed-30">25-30km/h</span></li>
+            <li><strong>百米冲刺</strong>：完成一次<span class="highlight">40码以上保持三秒</span> <span class="speed-indicator speed-40">≥40km/h</span></li>
+            <li><strong>特殊区域</strong>：公交车站、学校、路口、横道线必须<span class="highlight">减速或停车</span>且<span class="highlight">不超过30码</span> <span class="speed-indicator speed-30">≤30km/h</span></li>
+            <li><strong>全程限速</strong>：任意路段<span class="highlight">不能超过60码</span> <span class="speed-indicator speed-60">≤60km/h</span></li>
+            <li><strong>正常行驶</strong>：建议<span class="highlight">25码左右</span> <span class="speed-indicator speed-30">25km/h</span></li>
+        </ul>
+    </div>
+    
+    <div class="card procedure">
+        <h2>考试开始流程</h2>
+        <ul>
+            <li>站在副驾驶外<span class="highlight">输入指纹</span>，听到"认证成功请稍后"<span class="highlight">不要离开</span></li>
+            <li>几秒后提示"请开始考试"再<span class="highlight">绕车一周半</span></li>
+            <li>上车后：调整座椅→后视镜→<span class="highlight">系安全带</span>→启动发动机→做灯光</li>
+            <li><strong>起步顺序</strong>：<span class="highlight">打左转向灯</span>→挂档→松手刹</li>
+        </ul>
+    </div>
+    
+    <div class="card procedure">
+        <h2>考试结束流程</h2>
+        <ul>
+            <li>靠边停车完成后：<span class="highlight">挂P档</span>→拉手刹→熄火→松脚刹→解安全带</li>
+            <li><span class="highlight">观察左后方</span>确认安全后开门下车</li>
+            <li><span class="highlight">车门关重一点</span>，站门外等待报成绩</li>
+        </ul>
+    </div>
+    
+    <footer>
+        © 2025 上海龙泉考点科目三小助手 · 祝您考试顺利
+    </footer>
+    
+    <script>
+        // 添加卡片点击效果
+        document.querySelectorAll('.card').forEach(card => {
+            card.addEventListener('click', function() {
+                this.style.transform = 'scale(0.98)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 200);
+            });
+        });
+        
+        // 添加返回按钮点击效果
+        document.querySelector('.back-button').addEventListener('click', function() {
+            this.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                this.style.transform = '';
+            }, 200);
+        });
+        
+        // 关键卡片持续脉动提醒
+        setInterval(() => {
+            const criticalCard = document.querySelector('.critical');
+            criticalCard.classList.toggle('pulse');
+        }, 4000);
+    </script>
+</body>
+</html>

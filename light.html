@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>上海龙泉考点科目三灯光操作</title>
+    <style>
+        :root {
+            --primary: #e74c3c;
+            --secondary: #3498db;
+            --dark: #2c3e50;
+            --light: #ecf0f1;
+            --success: #2ecc71;
+            --warning: #f39c12;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'PingFang SC', 'Helvetica Neue', Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: var(--dark);
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 25px;
+            position: relative;
+        }
+        
+        h1 {
+            color: var(--primary);
+            font-size: 24px;
+            margin-bottom: 10px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        h1:after {
+            content: "";
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 3px;
+        }
+        
+        .subtitle {
+            color: var(--dark);
+            font-size: 14px;
+            opacity: 0.8;
+        }
+        
+        .back-button {
+            position: absolute;
+            left: 0;
+            top: 5px;
+            background: none;
+            border: none;
+            color: var(--secondary);
+            font-size: 14px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+        
+        .back-button:before {
+            content: "←";
+            margin-right: 5px;
+            font-size: 16px;
+        }
+        
+        .light-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+        
+        .light-table th, .light-table td {
+            padding: 12px 10px;
+            text-align: center;
+            border: 1px solid #e1e1e1;
+        }
+        
+        .light-table th {
+            background-color: #7986CB;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .light-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        .light-table tr:hover {
+            background-color: #f1f1f1;
+        }
+        
+        .row-1, .row-9, .row-10 {
+            background-color: #C5CAE9 !important;
+        }
+        
+        .row-2, .row-4, .row-5, .row-8 {
+            background-color: #FFCCBC !important;
+        }
+        
+        .row-3 {
+            background-color: #FFF9C4 !important;
+        }
+        
+        .row-6 {
+            background-color: #E1BEE7 !important;
+        }
+        
+        .row-7 {
+            background-color: #FFF59D !important;
+        }
+        
+        .light-icon {
+            font-size: 20px;
+            vertical-align: middle;
+        }
+        
+        .note {
+            background: white;
+            border-radius: 12px;
+            padding: 15px;
+            margin-top: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            border-left: 5px solid var(--warning);
+        }
+        
+        .note h3 {
+            color: var(--warning);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .note h3:before {
+            content: "⚠️";
+            margin-right: 8px;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #7f8c8d;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <button class="back-button" onclick="window.location.href='index.html'">返回</button>
+        <h1>科目三灯光操作</h1>
+        <p class="subtitle">上海龙泉考点灯光操作指南</p>
+    </header>
+    
+    <table class="light-table">
+        <thead>
+            <tr>
+                <th width="10%">序号</th>
+                <th width="35%">语音播报</th>
+                <th width="15%">图标</th>
+                <th width="40%">灯光操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="row-1">
+                <td>1</td>
+                <td>请开启前照灯</td>
+                <td>💡</td>
+                <td>开启近光灯</td>
+            </tr>
+            <tr class="row-2">
+                <td>2</td>
+                <td>同方向近距离跟车行驶</td>
+                <td>💡</td>
+                <td>近光灯</td>
+            </tr>
+            <tr class="row-3">
+                <td rowspan="5">3</td>
+                <td>通过急弯</td>
+                <td></td>
+                <td>远近光交替</td>
+            </tr>
+            <tr class="row-3">
+                <td>通过坡路</td>
+                <td></td>
+                <td>远近光交替</td>
+            </tr>
+            <tr class="row-3">
+                <td>通过拱桥</td>
+                <td></td>
+                <td>远近光交替</td>
+            </tr>
+            <tr class="row-3">
+                <td>通过人行横道</td>
+                <td></td>
+                <td>远近光交替</td>
+            </tr>
+            <tr class="row-3">
+                <td>通过没有交通信号灯控制的路口</td>
+                <td></td>
+                <td>远近光交替</td>
+            </tr>
+            <tr class="row-4">
+                <td>4</td>
+                <td>与机动车会车</td>
+                <td>💡</td>
+                <td>近光灯</td>
+            </tr>
+            <tr class="row-5">
+                <td>5</td>
+                <td>通过交通信号灯控制的路口</td>
+                <td>💡</td>
+                <td>近光灯</td>
+            </tr>
+            <tr class="row-6">
+                <td>6</td>
+                <td>超越前方车辆</td>
+                <td>⬅️💡➡️</td>
+                <td>左转灯—远近光交替—右转灯</td>
+            </tr>
+            <tr class="row-7">
+                <td>7</td>
+                <td>在照明不良的道路行驶</td>
+                <td>💡</td>
+                <td>远光灯</td>
+            </tr>
+            <tr class="row-7">
+                <td></td>
+                <td>在无照明的道路行驶</td>
+                <td>💡</td>
+                <td>远光灯</td>
+            </tr>
+            <tr class="row-8">
+                <td>8</td>
+                <td>在有路灯、照明良好的道路行驶</td>
+                <td>💡</td>
+                <td>近光灯</td>
+            </tr>
+            <tr class="row-9">
+                <td>9</td>
+                <td>路边临时停车</td>
+                <td>🚨</td>
+                <td>示宽灯+报警灯</td>
+            </tr>
+            <tr class="row-10">
+                <td>10</td>
+                <td>请关闭所有的灯光并完成考试</td>
+                <td></td>
+                <td>关闭所有灯光</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <div class="note">
+        <h3>考试提示</h3>
+        <p>注：1、9、10顺序固定，2—8顺序随机抽取，3每次五个中抽取一个，7每次二个里抽取一个。</p>
+    </div>
+    
+    <footer>
+        © 2025 上海龙泉考点科目三小助手 · 祝您考试顺利
+    </footer>
+    
+    <script>
+        // 添加表格行点击高亮效果
+        document.querySelectorAll('.light-table tbody tr').forEach(row => {
+            row.addEventListener('click', function() {
+                // 移除所有行的高亮
+                document.querySelectorAll('.light-table tbody tr').forEach(r => {
+                    r.style.boxShadow = '';
+                });
+                
+                // 添加当前行高亮
+                this.style.boxShadow = 'inset 0 0 0 2px var(--primary)';
+                
+                // 2秒后移除高亮
+                setTimeout(() => {
+                    this.style.boxShadow = '';
+                }, 2000);
+            });
+        });
+    </script>
+</body>
+</html>
